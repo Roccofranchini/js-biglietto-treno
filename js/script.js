@@ -13,23 +13,28 @@ L'output del prezzo finale va stampato in forma umana (con massimo due decimali,
 4- creare una variabile saledprice data dal prezzo pieno meno lo sconto in base all'età
 */
 
+// variabili utente
+
 var km = prompt('quanti kilometri è lungo il tuo viaggio?');
 var years = prompt('quanti anni hai?');
+var fullPrice = parseInt(km) * 0.21;
+var risultato = document.getElementById('risultato');
 
 console.log(km);
 console.log(years);
-
-var fullPrice = parseInt(km) * 0.21;
-
 console.log(fullPrice);
 
-var finalPrice;
+// sconti
 
 var minorSale = fullPrice * 20 / 100;
-console.log(minorSale);
-
 var seniorSale = fullPrice * 40 / 100;
+
+console.log(minorSale);
 console.log(seniorSale);
+
+// prezzo scontato
+
+var finalPrice;
 
 if (years < 18) {
     finalPrice = fullPrice - minorSale;
@@ -40,3 +45,13 @@ if (years < 18) {
 }
 
 console.log(finalPrice);
+
+// trasforma il costo risultante in euro
+
+var euroCost = parseFloat(finalPrice).toFixed(2);
+
+console.log(euroCost)
+
+// modifica l'HTML
+
+risultato.innerHTML = 'Il prezzo del tuo biglietto di ' + km + 'km ' + 'è di ' + euroCost + ' €';
